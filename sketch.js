@@ -16,7 +16,7 @@ function setup() {
 	rectMode(CENTER);
 	
 
-	packageSprite=createSprite(width/2, 80, 10,10);
+	packageSprite=createSprite(width/2, 200, 10,10);
 	packageSprite.addImage(packageIMG)
 	packageSprite.scale=0.2
 
@@ -31,7 +31,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:3, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:1, density:1});
 	World.add(world, packageBody);
 	
 
@@ -48,8 +48,8 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
-  packageSprite.x= packageBody.position.x 
-  packageSprite.y= packageBody.position.y 
+  
+  keyPressed();
   drawSprites();
  
 }
@@ -57,7 +57,8 @@ function draw() {
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
     // Look at the hints in the document and understand how to make the package body fall only on
-    
+    packageSprite.x= packageBody.position.x ;
+  packageSprite.y= packageBody.position.y ;
   }
 }
 
